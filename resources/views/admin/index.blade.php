@@ -15,6 +15,7 @@
 </div>
 <hr>
 @foreach($items as $item)
+
 <div class="row">
     <div class="col-md-12">
         <p><strong>{{ $item['title'] }}</strong> <a href="{{ route('admin.edit', ['id' => array_search($item, $items)]) }}">Edit</a></p>

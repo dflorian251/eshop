@@ -10,6 +10,7 @@ class ItemController extends Controller
 {
     public function getIndex(Store $session) {
         $item = new Item();
+        // $item->resetData($session);
         $items = $item->getItems($session); 
         return view('eshop.index', ['items' => $items]);
     }
@@ -43,14 +44,20 @@ class ItemController extends Controller
         $item = $item->getItem($session, $id);
         return view('admin.edit', ['item' => $item, 'itemId' => $id]);
     }
+    
+    public function adminUpdateItem(Store $session, Request $request) {
+        // $this->validate($request, [
+        //     'title' => 'required|min:5',
+        //     'content' => 'required|min:10'
+        // ]);
+        $item = new Item();
+        $item->editItem($session, $request->input('id'), $request->input('title'), $request->input('description'), $request->input('price'));
+        return redirect()->route('admin.index')->with('info', 'Item edited. New Title is: ' . $request->input('title'));
+    }
 
-    // public function adminUpdateItem(Store $session, Request $request) {
-    //     // $this->validate($request, [
-    //     //     'title' => 'required|min:5',
-    //     //     'content' => 'required|min:10'
-    //     // ]);
+    // public function resetData(Store $session) {
     //     $item = new Item();
-    //     $item->editItem($session, $request->input('id'), $request->input('title'), $request->input('description'), $request->input('price'));
-    //     return redirect()->route('admin.index')->with('info', 'Item edited. New Title is: ' . $request->input('title'));
+    //     $item->resetData($session);
+    //     return redirect()->route('other.index');
     // }
 }
