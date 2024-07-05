@@ -28,11 +28,11 @@ class ItemController extends Controller
     }
 
     public function adminCreateItem(Store $session, Request $request) {
-        // $this->validate($request, [
-        //     'title' => 'required|min:5',
-        //     'description' => 'required|min:10',
-        //     'price' => 'required'
-        // ]);
+        $validated = $request->validate([
+            'title' => 'required|max:10',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
 
         $item = new Item();
         $item->addItem($session, $request->input('title'), $request->input('description'), $request->input('price'));
@@ -46,18 +46,14 @@ class ItemController extends Controller
     }
     
     public function adminUpdateItem(Store $session, Request $request) {
-        // $this->validate($request, [
-        //     'title' => 'required|min:5',
-        //     'content' => 'required|min:10'
-        // ]);
+        $validated = $request->validate([
+            'title' => 'required|max:10',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+        
         $item = new Item();
         $item->editItem($session, $request->input('id'), $request->input('title'), $request->input('description'), $request->input('price'));
         return redirect()->route('admin.index')->with('info', 'Item edited. New Title is: ' . $request->input('title'));
     }
-
-    // public function resetData(Store $session) {
-    //     $item = new Item();
-    //     $item->resetData($session);
-    //     return redirect()->route('other.index');
-    // }
 }
