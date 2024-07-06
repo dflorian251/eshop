@@ -34,8 +34,12 @@ class ItemController extends Controller
             'price' => 'required'
         ]);
 
-        $item = new Item();
-        $item->addItem($session, $request->input('title'), $request->input('description'), $request->input('price'));
+        $item = new Item([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price')
+        ]);
+        $item->save();
         return redirect()->route('admin.index')->with('info', 'Item created. Title is: ' . $request->input('title'));
     }
 

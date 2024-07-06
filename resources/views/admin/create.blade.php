@@ -21,7 +21,7 @@
                 <input type="text" class="form-control" id="title" name="title">
             </div>
             <div class="form-group">
-                <label for="description">Content</label>
+                <label for="description">Description</label>
                 <input type="text" class="form-control" id="description" name="description">
             </div>
             <div class="form-group">

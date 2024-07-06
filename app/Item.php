@@ -2,7 +2,12 @@
 
 namespace App;
 
-class Item {
+use Illuminate\Database\Eloquent\Model;
+
+class Item extends Model {
+    protected $fillable = ['title', 'descirption', 'price'];
+
+
     public function getItems($session) {
         if (!$session->has('items')) {
             $this->createDummyData($session);
