@@ -60,4 +60,10 @@ class ItemController extends Controller
         $item->save();
         return redirect()->route('admin.index')->with('info', 'Item edited. New Title is: ' . $request->input('title'));
     }
+
+    public function adminDeleteItem($id) {
+        $item = Item::find($id);
+        $item->delete();
+        return redirect()->route('admin.index')->with('info', 'Item deleted.');
+    }
 }

@@ -24,4 +24,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/edit/{id}', [ItemController::class, 'getAdminEdit'])->name('admin.edit');
 
     Route::post('/edit', [ItemController::class, 'adminUpdateItem'])->name('admin.update');
+
+    Route::get('delete/{id}', [ItemController::class, 'adminDeleteItem'])->name('admin.delete');
 });

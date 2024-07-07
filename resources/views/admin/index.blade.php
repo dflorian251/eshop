@@ -18,7 +18,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <p><strong>{{ $item->title }}</strong> <a href="{{ route('admin.edit', ['id' => $item->id]) }}">Edit</a></p>
+        <p><strong>{{ $item->title }}</strong> <a href="{{ route('admin.edit', ['id' => $item->id]) }}">Edit</a> <a href="{{ route('admin.delete', ['id' => $item->id]) }}">Delete</a> </p>
     </div>
 </div>
 @endforeach
