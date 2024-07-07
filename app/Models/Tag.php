@@ -10,6 +10,6 @@ class Tag extends Model
     use HasFactory;
 
     public function items() {
-        return $this->hasMany('App\Item');
+        return $this->belongsToMany('App\Item')->withTimestamps();
     }
 }

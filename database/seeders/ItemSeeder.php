@@ -17,22 +17,19 @@ class ItemSeeder extends Seeder
         DB::table('items')->insert([
             'title' => Str::random(10),
             'description' => Str::random(20),
-            'price' => '2.5',
-            'tag_id' => 1
+            'price' => '2.5'
         ]);
 
         DB::table('items')->insert([
             'title' => Str::random(10),
             'description' => Str::random(20),
-            'price' => '5.5',
-            'tag_id' => 2
+            'price' => '5.5'
         ]);
 
         DB::table('items')->insert([
             'title' => Str::random(10),
             'description' => Str::random(20),
-            'price' => '10',
-            'tag_id' => 1
+            'price' => '10'
         ]);
     }
 }
