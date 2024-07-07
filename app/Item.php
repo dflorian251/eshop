@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model {
     protected $fillable = ['title', 'descirption', 'price'];
 
+
+    public function tags() {
+        return $this->belongTo('App\Models\Tag');
+    }
+
     public function resetData($session) {
         $items = [
             [
