@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-6">
         <h1>{{ $item->title }}</h1>
-        {{-- <p class="lead">{{ $item['description'] }}</p> --}}
+        <p class="lead">{{ $item->description }}</p>
         <h2>${{ $item->price }}</h2>
         <button class="btn btn-primary btn-lg">Add to Cart</button>
       </div>

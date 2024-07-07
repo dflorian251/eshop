@@ -34,9 +34,9 @@ class ItemController extends Controller
         ]);
         $item = new Item([
             'title' => $request->input('title'),
-            'description' => $request->input('description'),
             'price' => $request->input('price')
         ]);
+        $item->description = $request->input('description');
         $item->save();
         return redirect()->route('admin.index')->with('info', 'Item created. Title is: ' . $request->input('title'));
     }

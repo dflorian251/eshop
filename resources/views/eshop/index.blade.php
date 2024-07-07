@@ -15,7 +15,7 @@
                 <img src="https://via.placeholder.com/150" class="card-img-top" alt="Item Image">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ route('eshop.item', ['id' => $item->id]) }}">{{ $item->title }}</a></h5>
-                    {{-- <p class="card-text">{{ $item['description'] }}</p> --}}
+                    <p class="card-text">{{ $item->description }}</p>
                     <p class="card-text"><strong>${{ $item->price }}</strong></p>
                     <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
