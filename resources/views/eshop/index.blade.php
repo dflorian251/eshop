@@ -16,6 +16,11 @@
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ route('eshop.item', ['id' => $item->id]) }}">{{ $item->title }}</a></h5>
                     <p class="card-text">{{ $item->description }}</p>
+                    <div class="tags">
+                        @foreach ($item->tags as $tag)
+                        <span class="badge bg-secondary">{{ $tag->name }}</span>
+                        @endforeach
+                    </div>
                     <p class="card-text"><strong>${{ $item->price }}</strong></p>
                     <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>

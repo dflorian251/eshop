@@ -15,9 +15,7 @@ Route::get('/eshop/{id}', [ItemController::class, 'getItem'])->name('eshop.item'
 Route::group(['prefix' => 'admin'], function() {
     Route::get('', [ItemController::class, 'getAdminIndex'])->name('admin.index');
     
-    Route::get('/create', function() {
-        return view('admin.create');
-    })->name('admin.create');
+    Route::get('/create', [ItemController::class, 'getAdminCreate'])->name('admin.create');
 
     Route::post('/create', [ItemController::class, 'adminCreateItem'])->name('admin.create');
 

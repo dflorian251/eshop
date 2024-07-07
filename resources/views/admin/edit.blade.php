@@ -28,6 +28,13 @@
                 <label for="price">Price</label>
                 <input type="numeric" class="form-control" id="price" name="price" value="{{ $item->price }}">
             </div>
+            @foreach($tags as $tag)
+            <div class="checkbox">
+                <label>
+                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ $itam->tags->contains($tag->id) ? 'checked' : '' }}> {{ $tag->name }}
+                </label>
+            </div>
+
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ $itemId }}">
             <button type="submit" class="btn btn-primary">Submit</button>
