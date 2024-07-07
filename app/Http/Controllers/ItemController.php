@@ -9,15 +9,15 @@ use Illuminate\Session\Store;
 class ItemController extends Controller
 {
     public function getIndex(Store $session) {
-        $item = new Item();
-        // $item->resetData($session);
-        $items = $item->getItems($session); 
+        // $item = new Item();
+        // // $item->resetData($session);
+        // $items = $item->getItems($session); 
+        $items = Item::all();
         return view('eshop.index', ['items' => $items]);
     }
 
     public function getAdminIndex(Store $session) {
-        $item = new Item();
-        $items = $item->getItems($session);
+       $items = Item::all();
         return view('admin.index', ['items' => $items]);
     }
 
