@@ -18,11 +18,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <p><strong>{{ $item['title'] }}</strong> <a href="{{ route('admin.edit', ['id' => array_search($item, $items)]) }}">Edit</a></p>
+        <p><strong>{{ $item->title }}</strong> <a href="{{ route('admin.edit', ['id' => $item->id]) }}">Edit</a></p>
     </div>
 </div>
 @endforeach
 @endsection
-
-
-{{-- {{ route('admin.edit', ['id' => array_search($item, $items)] )}} --}}

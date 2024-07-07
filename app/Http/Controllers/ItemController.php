@@ -22,8 +22,7 @@ class ItemController extends Controller
     }
 
     public function getItem(Store $session, $id) {
-        $item = new Item();
-        $item = $item->getItem($session, $id);
+        $item = Item::find($id);
         return view('eshop.item', ['item' => $item]);
     }
 
@@ -43,8 +42,7 @@ class ItemController extends Controller
     }
 
     public function getAdminEdit(Store $session, $id) {
-        $item = new Item();
-        $item = $item->getItem($session, $id);
+        $item = Item::find($id);
         return view('admin.edit', ['item' => $item, 'itemId' => $id]);
     }
     
@@ -55,8 +53,11 @@ class ItemController extends Controller
             'price' => 'required'
         ]);
         
-        $item = new Item();
-        $item->editItem($session, $request->input('id'), $request->input('title'), $request->input('description'), $request->input('price'));
+        $item = Item::find($request->input('id'));
+        $item->title = $request->input('title');
+        $item->description = $request->input('description');
+        $item->price = $request->input('price');
+        $item->save();
         return redirect()->route('admin.index')->with('info', 'Item edited. New Title is: ' . $request->input('title'));
     }
 }
