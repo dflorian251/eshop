@@ -29,11 +29,10 @@ class ItemController extends Controller
 
     public function adminCreateItem(Store $session, Request $request) {
         $validated = $request->validate([
-            'title' => 'required|max:10',
+            'title' => 'required|max:25',
             'description' => 'required',
             'price' => 'required'
         ]);
-
         $item = new Item([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -51,7 +50,7 @@ class ItemController extends Controller
     
     public function adminUpdateItem(Store $session, Request $request) {
         $validated = $request->validate([
-            'title' => 'required|max:10',
+            'title' => 'required|max:25',
             'description' => 'required',
             'price' => 'required'
         ]);
