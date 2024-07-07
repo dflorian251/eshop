@@ -10,7 +10,7 @@ class ItemController extends Controller
 {
     public function getIndex() {
         // // $item->resetData($session); 
-        $items = Item::all();
+        $items = Item::orderBy('created_at', 'desc')->paginate(2);
         return view('eshop.index', ['items' => $items]);
     }
 
