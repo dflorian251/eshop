@@ -12,6 +12,14 @@ class Item extends Model {
         return $this->belongsToMany('App\Models\Tag')->withTimestamps();
     }
 
+    public function setTitleAttribute($value) {
+        $this->attributes['title'] = strtolower($value);
+    }
+
+    public function getTitleAttribute($value) {
+        return strtoupper($value);
+    }
+
     public function resetData($session) {
         $items = [
             [
