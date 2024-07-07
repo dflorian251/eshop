@@ -4,29 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use Illuminate\Http\Request;
-use Illuminate\Session\Store;
 
 class ItemController extends Controller
 {
-    public function getIndex(Store $session) {
-        // $item = new Item();
-        // // $item->resetData($session);
-        // $items = $item->getItems($session); 
+    public function getIndex() {
+        // // $item->resetData($session); 
         $items = Item::all();
         return view('eshop.index', ['items' => $items]);
     }
 
-    public function getAdminIndex(Store $session) {
+    public function getAdminIndex() {
        $items = Item::all();
         return view('admin.index', ['items' => $items]);
     }
 
-    public function getItem(Store $session, $id) {
+    public function getItem($id) {
         $item = Item::find($id);
         return view('eshop.item', ['item' => $item]);
     }
 
-    public function adminCreateItem(Store $session, Request $request) {
+    public function adminCreateItem(Request $request) {
         $validated = $request->validate([
             'title' => 'required|max:25',
             'description' => 'required',
@@ -41,12 +38,12 @@ class ItemController extends Controller
         return redirect()->route('admin.index')->with('info', 'Item created. Title is: ' . $request->input('title'));
     }
 
-    public function getAdminEdit(Store $session, $id) {
+    public function getAdminEdit($id) {
         $item = Item::find($id);
         return view('admin.edit', ['item' => $item, 'itemId' => $id]);
     }
     
-    public function adminUpdateItem(Store $session, Request $request) {
+    public function adminUpdateItem(Request $request) {
         $validated = $request->validate([
             'title' => 'required|max:25',
             'description' => 'required',
